@@ -14,5 +14,8 @@ export default defineConfig({
       '@': resolve(__dirname, '../src/pixi-live2d-display/src'),
       '@cubism': resolve(__dirname, '../src/pixi-live2d-display/cubism/src')
     }
+  },
+  build: {
+    outDir: '../docs'
   }
 });

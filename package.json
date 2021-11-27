@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "npx vite ./example -c ./example/vite.config.ts",
+    "docs": "npx vite build ./example -c ./example/vite.config.ts",
     "build": "node ./scripts/build.js",
     "buildDev": "npm run build -- -d -t -s",
     "buildProd": "npm run build -- -r -t"

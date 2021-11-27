@@ -45,6 +45,7 @@ export default class Live2DSystem extends Renderer {
     // const model = await Live2DModel.from(data.json);
     component.model = instance
     this.renderSystem.containerManager.getContainer(changed.gameObject.id).addChildAt(instance, 0);
+    component.emit('loaded')
   }
   remove(changed: ComponentChanged) {
     const component = changed.component as Live2DComponent
