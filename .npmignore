@@ -1,0 +1,13 @@
+doc/
+example/
+src/
+test/
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.npmignore
+.prettierrc
+rollup.config.js
+tsconfig.json
+!*.d.ts
