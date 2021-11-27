@@ -1,4 +1,4 @@
-import { url as urlUtils } from 'pixi.js';
+import urlUtils from 'url'
 import { Middleware } from '@/utils/middleware';
 import { InternalModel, ModelSettings } from '@/cubism-common/index';
 import { ExtendedFileList } from './FileLoader';

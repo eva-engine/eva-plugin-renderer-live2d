@@ -7,7 +7,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "allowJs": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -17,12 +17,16 @@
     "sourceMap": false,
     "downlevelIteration": true,
     "noImplicitReturns": false,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "allowSyntheticDefaultImports": true,
     "lib": [
       "esnext",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@/*": ["src/pixi-live2d-display/src/*"],
+      "@cubism/*": ["src/pixi-live2d-display/cubism/src/*"]
+    },
   },
   "include": [
     "src/",
@@ -30,8 +34,4 @@
   "exclude": [
     "node_modules"
   ],
-  "paths": {
-    "@/*": ["./src/pixi-live2d-display/src/*"],
-    "@cubism/*": ["./src/pixi-live2d-display/cubism/src/*"]
-  },
 }

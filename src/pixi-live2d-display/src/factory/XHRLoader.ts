@@ -1,4 +1,4 @@
-import { Live2DLoaderContext, Live2DLoaderTarget } from '@/factory/Live2DLoader';
+// import { Live2DLoaderContext, Live2DLoaderTarget } from '@/factory/Live2DLoader';
 import { logger } from '@/utils';
 import { Middleware } from '@/utils/middleware';
 
@@ -22,7 +22,7 @@ export class XHRLoader {
     /**
      * All the created XHRs, keyed by their owners respectively.
      */
-    static xhrMap = new WeakMap<Live2DLoaderTarget, Set<XMLHttpRequest>>();
+    static xhrMap = new WeakMap<any, Set<XMLHttpRequest>>();
 
     /**
      * All the created XHRs as a flat array.
@@ -32,7 +32,7 @@ export class XHRLoader {
     /**
      * Middleware for Live2DLoader.
      */
-    static loader: Middleware<Live2DLoaderContext> = (context, next) => {
+    static loader: Middleware<any> = (context, next) => {
         return new Promise<void>((resolve, reject) => {
             const xhr = XHRLoader.createXHR(
                 context.target,
@@ -57,7 +57,7 @@ export class XHRLoader {
      * @param onerror - Error handler.
      */
     static createXHR<T = any>(
-        target: Live2DLoaderTarget | undefined,
+        target: any | undefined,
         url: string,
         type: XMLHttpRequestResponseType,
         onload: (data: T) => void,
@@ -76,7 +76,7 @@ export class XHRLoader {
             } else {
                 xhrSet.add(xhr);
             }
-
+//@ts-ignore
             if (!target.listeners('destroy').includes(XHRLoader.cancelXHRs)) {
                 target.once('destroy', XHRLoader.cancelXHRs);
             }
@@ -110,7 +110,7 @@ export class XHRLoader {
     /**
      * Cancels all XHRs related to this target.
      */
-    static cancelXHRs(this: Live2DLoaderTarget) {
+    static cancelXHRs(this: any) {
         XHRLoader.xhrMap.get(this)?.forEach(xhr => {
             xhr.abort();
             XHRLoader.allXhrSet.delete(xhr);

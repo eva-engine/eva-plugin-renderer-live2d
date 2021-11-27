@@ -12,10 +12,10 @@
     "noUncheckedIndexedAccess": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@cubism/*": ["cubism/src/*"]
-    },
+    // "paths": {
+    //   "@/*": ["src/*"],
+    //   "@cubism/*": ["cubism/src/*"]
+    // },
     "types": [
       "node"
     ],

@@ -1,5 +1,5 @@
 /// <reference path="../core/live2d.d.ts"/>
-// // / <reference path="../core/live2dcubismcore.d.ts"/>
+/// <reference path="../core/live2dcubismcore.d.ts"/>
 /// <reference path="../cubism/src/CubismSpec.d.ts"/>
 /// <reference path="types/Cubism2Spec.d.ts"/>
 /// <reference path="types/helpers.d.ts"/>

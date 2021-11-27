@@ -13,7 +13,7 @@ export function cubism4Ready(): Promise<void> {
         return Promise.resolve();
     }
 
-    startupPromise ??= new Promise<void>(((resolve, reject) => {
+    startupPromise = startupPromise ?? new Promise<void>(((resolve, reject) => {
         function startUpWithRetry() {
             try {
                 startUpCubism4();

@@ -238,7 +238,7 @@ export class Live2DFactory {
 
             const path = motionManager.getMotionFile(definition);
 
-            taskGroup[index] ??= Live2DLoader.load({
+            taskGroup[index] = taskGroup[index] ?? Live2DLoader.load({
                     url: path,
                     settings: motionManager.settings,
                     type: motionManager.motionDataType,
@@ -302,7 +302,7 @@ export class Live2DFactory {
 
             const path = expressionManager.getExpressionFile(definition);
 
-            tasks[index] ??= Live2DLoader.load({
+            tasks[index] = tasks[index] ?? Live2DLoader.load({
                     url: path,
                     settings: expressionManager.settings,
                     type: 'json',

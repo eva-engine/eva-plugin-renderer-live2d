@@ -227,7 +227,7 @@ export abstract class InternalModel extends EventEmitter {
             bottom = Math.max(vy, bottom);
         }
 
-        bounds ??= {} as Bounds;
+        bounds = {} as Bounds;
 
         bounds.x = left;
         bounds.y = top;

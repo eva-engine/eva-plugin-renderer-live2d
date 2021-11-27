@@ -1,10 +1,11 @@
 import { InternalModel, ModelSettings } from '@/cubism-common/index';
 import { Live2DFactory, Live2DFactoryContext } from '@/factory';
 import { Middleware } from '@/utils/middleware';
-import { url as urlUtils } from 'pixi.js';
+import urlUtils from 'url'
 
 declare global {
     interface File {
+        // @ts-ignore
         webkitRelativePath: string;
     }
 }

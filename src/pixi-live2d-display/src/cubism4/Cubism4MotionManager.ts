@@ -41,6 +41,7 @@ export class Cubism4MotionManager extends MotionManager<CubismMotion, CubismSpec
             this.expressionManager = new Cubism4ExpressionManager(this.settings, options);
         }
 
+        //@ts-ignore
         this.queueManager.setEventCallback((caller, eventValue, customData) => {
             this.emit('motion:' + eventValue);
         });

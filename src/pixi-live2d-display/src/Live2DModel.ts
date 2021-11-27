@@ -4,7 +4,7 @@ import type { Live2DFactoryOptions } from '@/factory/Live2DFactory';
 import { Live2DFactory } from '@/factory/Live2DFactory';
 import { Texture, WebGLRenderer } from 'pixi.js';
 import { Container } from 'pixi.js';
-import { Matrix, ObservablePoint, Point, Rectangle } from 'pixi.js';
+import { Matrix, ObservablePoint, Point } from 'pixi.js';
 import { InteractionMixin } from './InteractionMixin';
 import { Live2DTransform } from './Live2DTransform';
 import { applyMixins, logger } from './utils';
@@ -28,7 +28,7 @@ const tempPoint = new Point();
 const tempMatrix = new Matrix();
 
 // a reference to Ticker class, defaults to window.PIXI.Ticker (when loaded by a <script> tag)
-let tickerInstance
+let tickerInstance: any
 
 export interface Live2DModel<IM extends InternalModel = InternalModel> extends InteractionMixin { }
 
@@ -283,6 +283,7 @@ export class Live2DModel<IM extends InternalModel = InternalModel> extends Conta
             this._recursivePostUpdateTransform();
 
             if (!this.parent) {
+                // @ts-ignore
                 (this.parent as any) = this._tempDisplayObjectParent;
                 this.displayObjectUpdateTransform();
                 (this.parent as any) = null;
@@ -340,10 +341,14 @@ export class Live2DModel<IM extends InternalModel = InternalModel> extends Conta
         // renderer.shader.reset();
         // renderer.state.reset();
 
+        // @ts-ignore
         renderer.setObjectRenderer(renderer.emptyRenderer)
+        // @ts-ignore
         renderer.bindVao(null)
+        // @ts-ignore
         renderer._activeShader = null
         // renderer._activeRenderTarget = null
+        // @ts-ignore
         renderer.rootRenderTarget.activate()
 
 
@@ -379,6 +384,7 @@ export class Live2DModel<IM extends InternalModel = InternalModel> extends Conta
             this.internalModel.bindTexture(i, (texture.baseTexture as any)._glTextures[this.glContextID].texture);
 
             // manually update the GC counter so they won't be GCed while using this model
+            // @ts-ignore
             (texture.baseTexture as any).touched = renderer.textureGC.count;
         }
 
@@ -391,7 +397,8 @@ export class Live2DModel<IM extends InternalModel = InternalModel> extends Conta
             this.deltaTime = 0;
         }
 
-
+        
+        // @ts-ignore
         const internalTransform = renderer.rootRenderTarget.projectionMatrix
             .copy(tempMatrix)
             .append(this.worldTransform);
@@ -399,9 +406,11 @@ export class Live2DModel<IM extends InternalModel = InternalModel> extends Conta
 
         this.internalModel.updateTransform(internalTransform);
         this.internalModel.draw(renderer.gl);
+        // @ts-ignore
         renderer.state.resetToDefault();
         for (let i = 0; i < renderer.boundTextures.length; i++) {
-          renderer.unbindTexture(renderer.boundTextures[i]);
+            // @ts-ignore
+            renderer.unbindTexture(renderer.boundTextures[i]);
         }
         // reset WebGL state and texture bindings
         // renderer.state.reset();
