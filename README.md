@@ -1,7 +1,7 @@
 # Eva.js Live2D Plugin
 
 
-Modify on the basis of (guansss/pixi-live2d-display)[https://github.com/guansss/pixi-live2d-display]
+Modify on the basis of [guansss/pixi-live2d-display](https://github.com/guansss/pixi-live2d-display)
 
 ```js
 import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';

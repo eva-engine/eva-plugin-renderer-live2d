@@ -99,7 +99,6 @@ function createConfig(format, output, plugins = []) {
     },
   });
   hasTypesChecked = true;
-  console.log(123123)
 
   return {
     input: entryFile,
