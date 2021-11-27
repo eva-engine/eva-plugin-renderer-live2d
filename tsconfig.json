@@ -29,5 +29,9 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "paths": {
+    "@/*": ["./src/pixi-live2d-display/src/*"],
+    "@cubism/*": ["./src/pixi-live2d-display/cubism/src/*"]
+  },
 }

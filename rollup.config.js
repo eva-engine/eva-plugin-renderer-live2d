@@ -9,7 +9,7 @@ import globals from 'rollup-plugin-node-globals';
 import {terser} from 'rollup-plugin-terser';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
-
+import alias from '@rollup/plugin-alias';
 const packageDir = path.resolve(__dirname);
 const resolve = p => path.resolve(packageDir, p);
 
@@ -99,6 +99,7 @@ function createConfig(format, output, plugins = []) {
     },
   });
   hasTypesChecked = true;
+  console.log(123123)
 
   return {
     input: entryFile,
@@ -113,6 +114,12 @@ function createConfig(format, output, plugins = []) {
     },
     external: ['pixi.js', '@eva/eva.js', '@eva/plugin-renderer', '@eva/renderer-adapter'],
     plugins: [
+      alias({
+        entries: [
+          { find: '@', replacement: path.resolve(__dirname, 'src/pixi-live2d-display/src') },
+          { find: '@cubism', replacement: path.resolve(__dirname, 'src/pixi-live2d-display/cubism/src') }
+        ]
+      }),
       ...plugins,
       globals(),
       builtins(),

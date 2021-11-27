@@ -1,0 +1,74 @@
+{
+  "name": "pixi-live2d-display",
+  "version": "0.3.1",
+  "description": "Live2D plugin for PixiJS",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guansss/pixi-live2d-display.git"
+  },
+  "author": "guansss <821143943@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "playground": "webpack serve --config=test/playground/webpack.playground.config.js",
+    "test": "webpack --config=webpack.test.config.js && npx floss --path=build.test --reporter=tap",
+    "test:ci": "yarn build && yarn test",
+    "test:debug": "webpack --config=webpack.test.config.js && node node_modules/floss/bin/floss.js --path=build.test -d",
+    "build": "rimraf lib && rimraf dist && webpack --mode=production",
+    "type": "rimraf types && dts-bundle-generator src/index.ts --no-check --project=tsconfig.build.json -o=types/index.d.ts && node scripts/patch-types.js",
+    "doc": "rimraf \"docs/!(.git|.nojekyll)\" && node scripts/gen-docs.js",
+    "deploy": "cd docs && git add -A && git commit -m \"Update docs\" && git push",
+    "prepublishOnly": "yarn build && yarn test && yarn type"
+  },
+  "files": [
+    "lib",
+    "dist",
+    "src",
+    "cubism/src",
+    "types"
+  ],
+  "types": "types/index.d.ts",
+  "dependencies": {
+    "lodash": "latest"
+  },
+  "peerDependencies": {
+    "@pixi/core": "^5.2.1",
+    "@pixi/display": "^5.2.1",
+    "@pixi/loaders": "^5.2.1",
+    "@pixi/math": "^5.2.1",
+    "@pixi/sprite": "^5.2.1",
+    "@pixi/utils": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/chai-as-promised": "^7.1.2",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "latest",
+    "@webpack-cli/serve": "^1.2.1",
+    "adm-zip": "^0.5.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chalk": "^4.0.0",
+    "dts-bundle-generator": "^5.5.0",
+    "electron": "^9.4.0",
+    "floss": "^3.0.0",
+    "fork-ts-checker-webpack-plugin": "^6.0.7",
+    "glob": "^7.1.6",
+    "handlebars": "^4.7.6",
+    "jszip": "^3.5.0",
+    "lodash": "latest",
+    "node-fetch": "^2.6.1",
+    "pixi.js": "^5.3.7",
+    "rimraf": "^3.0.2",
+    "sinon": "^9.0.1",
+    "sinon-chai": "^3.5.0",
+    "ts-loader": "^8.0.12",
+    "typedoc": "0.20.16",
+    "typescript": "^4.1.2",
+    "webpack": "^4.42.0",
+    "webpack-bundle-analyzer": "^3.7.0",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
+  }
+}

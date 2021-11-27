@@ -1,0 +1,36 @@
+# Live2D runtime
+core
+!core/README.md
+!core/live2d.d.ts
+
+# artifacts
+/build*
+/lib
+/dist
+/types
+/docs
+
+.DS_Store
+node_modules
+
+# TypeScript
+*.tsbuildinfo
+
+# dot-env
+.env*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

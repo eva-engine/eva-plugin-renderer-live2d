@@ -1,25 +1,55 @@
-# Eva.js plugin template
+# Eva.js Live2D Plugin
 
-## How To Develop a Eva.js plugin?
 
-[https://eva.js.org/#/tutorials/pluginDevelop](https://eva.js.org/#/tutorials/pluginDevelop)
+Modify on the basis of (guansss/pixi-live2d-display)[https://github.com/guansss/pixi-live2d-display]
 
-## How To use this template?
+```js
+import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
+import { RendererSystem } from '@eva/plugin-renderer';
+import { Live2DSystem, Live2D } from 'eva-plugin-renderer-live2d'
 
-### install
+resource.addResource([
+  {
+    name: 'live2dName',
+    // @ts-ignore
+    type: RESOURCE_TYPE.LIVE2D,
+    src: {
+      url: {
+        type: 'data',
+        data: 'https://cdn.jsdelivr.net/gh/Eikanya/Live2d-model/galgame%20live2d/Fox%20Hime%20Zero/mori_suit/mori_suit.model3.json'
+      }
+    }
+  }
+]);
 
-`npm install` or `yarn install` whatever.
+const game = new Game({
+  systems: [
+    new RendererSystem({
+      canvas: document.querySelector('#canvas'),
+      width: 1000,
+      height: 2000,
+    }),
+    new Live2DSystem(),
+  ],
+});
 
-### develop server
+const go = new GameObject("aaa", {
+  size: {
+    width: 0,
+    height: 0
+  },
+  position: {
+    x: 0,
+    y: 0
+  },
+  scale: {
+    x: 0.5,
+    y: 0.5
+  }
+});
+go.addComponent(new Live2D({
+  resource: 'live2dName'
+}))
+game.scene.addChild(go);
 
-run `npm run dev` first, then a page will open as `http://localhost:8080` in your default brower. When file in example directory changed, page will reload automatically.
-
-### build
-
-- run `npm run buildDev` to build develop files
-- run `npm run buildProd` to build release files
-
-## Naming conventions
-
-- The name of this package must be prefixed with `eva-plugin-`
-- System must be export with suffix `System`
+```

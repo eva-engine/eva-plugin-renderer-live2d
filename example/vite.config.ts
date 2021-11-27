@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-
+import { resolve } from 'path'
 export default defineConfig({
   server: {
     open: true,
@@ -8,5 +8,11 @@ export default defineConfig({
   },
   publicDir: './public/',
   base: './',
-  root: './examples'
+  root: './examples',
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, '../src/pixi-live2d-display/src'),
+      '@cubism': resolve(__dirname, '../src/pixi-live2d-display/cubism/src')
+    }
+  }
 });
