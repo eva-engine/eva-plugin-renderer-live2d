@@ -4,10 +4,14 @@
 
 Modify on the basis of [guansss/pixi-live2d-display](https://github.com/guansss/pixi-live2d-display)
 
+```bash
+npm i eva-plugin-renderer-live2d
+```
+
 ```js
 import { Game, GameObject, resource, RESOURCE_TYPE } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
-import { Live2DSystem, Live2D } from '../src'
+import { Live2DSystem, Live2D } from 'eva-plugin-renderer-live2d'
 
 resource.addResource([
   {
